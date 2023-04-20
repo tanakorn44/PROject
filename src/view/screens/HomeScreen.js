@@ -24,31 +24,11 @@ const HomeScreen = ({ navigation }) => {
 
 
     const [catergoryIndex, setCategoryIndex] = React.useState(0);
-    const categories = ['POPULAR', 'ORGANIC', 'INDOORS', 'SYNTHETIC'];
+ 
     const Tab = createBottomTabNavigator();
 
 
-    // const CategoryList = () => {
-
-    //     return (
-    //         <View style={style.categoryContainer}>
-    //             {categories.map((item, index) => (
-    //                 <TouchableOpacity
-    //                     key={index}
-    //                     activeOpacity={0.8}
-    //                     onPress={() => setCategoryIndex(index)}>
-    //                     <Text
-    //                         style={[
-    //                             style.categoryText,
-    //                             catergoryIndex === index && style.categoryTextSelected,
-    //                         ]}>
-    //                         {item}
-    //                     </Text>
-    //                 </TouchableOpacity>
-    //             ))}
-    //         </View>
-    //     );
-    // };
+  
 
     const Card = ({ plant }) => {
         return (
@@ -126,16 +106,7 @@ const HomeScreen = ({ navigation }) => {
       
 
             </View>
-            <View style={{ marginTop: 30, flexDirection: 'row' }}>
-                <View style={style.searchContainer}>
-                    <Icon name="search" size={25} style={{ marginLeft: 20 }} />
-                    <TextInput placeholder="Search" style={style.input} />
-                </View>
-                <View style={style.sortBtn}>
-                    <Icon name="sort" size={30} color={COLORS.white} />
-                </View>
-            </View>
-            {/* <CategoryList /> */}
+            
             <FlatList
                 columnWrapperStyle={{ justifyContent: 'space-between' }}
                 showsVerticalScrollIndicator={false}

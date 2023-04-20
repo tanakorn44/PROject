@@ -1,33 +1,31 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 import OrdersScreen from './OrdersScreen';
 import MyDetailsScreen from './MyDetailsScreen';
 import DeliveryAddressScreen from './DeliveryAddressScreen';
 import AboutScreen from './AboutScreen';
 import Logo from '../../assets/logo.png';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-function AccountScreen() {
+import HomeScreen from './HomeScreen';
+import CreatePostScreen from './CreatePostScreen';
+
+import { Icon } from 'react-native-elements';
+import DetailsScreen from './DetailsScreen';
+
+
+const AccountScreen = ({ navigation }) => {
     const [page, setPage] = useState('Account');
 
-    const navigateTo = (pageName) => {
-        setPage(pageName);
-    };
+    
 
     const renderPage = () => {
-        switch (page) {
-            case 'Orders':
-                return <OrdersScreen navigateTo={navigateTo} />;
-            case 'MyDetails':
-                return <MyDetailsScreen navigateTo={navigateTo} />;
-            case 'DeliveryAddress':
-                return <DeliveryAddressScreen navigateTo={navigateTo} />;
-            case 'About':
-                return <AboutScreen navigateTo={navigateTo} />;
-            default:
+
                 return (
                     <View style={styles.container}>
                         <View style={styles.header}>
-                            <MaterialIcons name="menu" size={28} color="white" />
+                            {/* <MaterialIcons name="menu" size={28} color="white" /> */}
+                         
                             <Text style={styles.headerText}>My Account</Text>
                         </View>
                         <View style={styles.userInfo}>
@@ -38,19 +36,23 @@ function AccountScreen() {
                             </View>
                         </View>
                         <View style={styles.options}>
-                            <TouchableOpacity style={styles.optionButton} onPress={() => navigateTo('Orders')}>
+                            <TouchableOpacity style={styles.optionButton} onPress={() => navigation.navigate('Orders')}>
                                 <MaterialIcons name="assignment" size={28} color="#4CAF50" />
                                 <Text style={styles.optionButtonText}>Orders</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.optionButton} onPress={() => navigateTo('MyDetails')}>
+                            <TouchableOpacity style={styles.optionButton} onPress={() => navigation.navigate('Home')}>
                                 <MaterialIcons name="person" size={28} color="#4CAF50" />
                                 <Text style={styles.optionButtonText}>My Details</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.optionButton} onPress={() => navigateTo('DeliveryAddress')}>
+                            <TouchableOpacity style={styles.optionButton} onPress={() => navigation.navigate('Home')}>
                                 <MaterialIcons name="location-on" size={28} color="#4CAF50" />
                                 <Text style={styles.optionButtonText}>Delivery Address</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.optionButton} onPress={() => navigateTo('About')}>
+                            <TouchableOpacity style={styles.optionButton} onPress={() => navigation.navigate('Partner')}>
+                                <MaterialIcons name="person" size={28} color="#4CAF50" />
+                                <Text style={styles.optionButtonText}>Partner</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.optionButton} onPress={() => navigation.navigate('Home')}>
                                 <MaterialIcons name="info" size={28} color="#4CAF50" />
                                 <Text style={styles.optionButtonText}>About</Text>
                             </TouchableOpacity>
@@ -60,17 +62,14 @@ function AccountScreen() {
                         </TouchableOpacity>
                     </View>
                 );
-        }
+        
     };
 
     return renderPage();
 }
 
-export default function App() {
-    return (
-        <AccountScreen />
-    );
-}
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -143,3 +142,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 });
+
+export default AccountScreen;

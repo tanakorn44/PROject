@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StatusBar } from 'react-native';
+import { StatusBar, View } from 'react-native';
 
 // screen
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -11,7 +11,9 @@ import CartScreen from './CartScreen';
 import AccountScreen from './AccountScreen';
 import MaketScreen from './MaketSceen';
 import DetailsScreen from './DetailsScreen';
-
+import PartnerScreen from './PartnerScreen';
+import CreactPostScreen from './AddProductScreen';
+import OrdersScreen from './OrdersScreen'
 
 
 const Stack = createStackNavigator();
@@ -25,6 +27,34 @@ const Stack = createStackNavigator();
                     component={DetailsScreen}
                    
                 />
+                
+                <Stack.Screen
+                    name="Cart"
+                    component={CartScreen}
+
+                />
+                <Stack.Screen
+                    name="Home"
+                    component={HomeScreen}
+
+                />
+                <Stack.Screen
+                    name="Partner"
+                    component={PartnerScreen}
+
+                />
+                <Stack.Screen
+                    name="Creact"
+                    component={CreactPostScreen}
+
+                />
+                <Stack.Screen
+                    name="Orders"
+                    component={OrdersScreen}
+
+                />
+
+            
             </Stack.Navigator>
         );
     };
@@ -36,19 +66,7 @@ const MyTab = ({navigation}) => {
         
 
             <Tab.Navigator >
-                <Tab.Screen
-                    name="home"
-                    component={HomeScreen} // ให้ใช้ 'Screen' component แทนที่ 'Icon' component  
-                    options={{
-                        tabBarIcon: ({ color, size, focused }) => (
-                            <Icon
-                                name={focused ? 'home' : 'home-outline'}
-                                size={size}
-                                color={color}
-                            />
-                        ),
-                    }}
-                />
+               
                 <Tab.Screen
                     name="market"
                     component={MaketScreen}
@@ -58,13 +76,14 @@ const MyTab = ({navigation}) => {
 
                         tabBarIcon: ({ color, size, focused }) => (
                             <Icon
-                                name={focused ? 'market' : 'ios-golf'}
+                                name={focused ? 'market' : 'md-basket'}
                                 size={size}
                                 color={color}
                             />
                         ),
                     }}
                 />
+           
                 <Tab.Screen
                     name="Cart"
                     component={CartScreen}
@@ -79,17 +98,15 @@ const MyTab = ({navigation}) => {
                         ),
                     }}
                 />
-                <Tab.Screen
-                    name="Account"
-                    component={AccountScreen}
-                    options={{
-                        headerShown: false,
+                <Tab.Screen  name="Account"component={AccountScreen} options={{  headerShown: false,
                         tabBarIcon: ({ color, size, focused }) => (
                             <Icon
                                 name={focused ? 'Account' : 'ios-person'}
                                 size={size}
                                 color={color}
+                                
                             />
+                            
                         ),
                     }}
                 />

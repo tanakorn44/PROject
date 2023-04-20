@@ -49,7 +49,7 @@ const CartScreen = () => {
             />
             <View style={styles.totalContainer}>
                 <Text style={styles.total}>Total:฿ {totalPrice.toFixed(2)}</Text>
-                <TouchableOpacity style={styles.checkoutButton}>
+                <TouchableOpacity style={styles.checkoutButton} >
                     <Text style={styles.checkoutButtonText}>Checkout</Text>
                 </TouchableOpacity>
             </View>

@@ -10,7 +10,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
 
 const width = Dimensions.get('window').width / 2 - 30;
-const MaketScreen = () => {
+const MaketScreen = ({navigation}) => {
     const [catergoryIndex, setCategoryIndex] = React.useState(0);
 
 
@@ -22,13 +22,24 @@ const MaketScreen = () => {
                     <Icon name="search-outline" size={20} color="#333" />
                     <Text style={styles.searchText}>Search in Shop</Text>
                 </View>
-                <TouchableOpacity style={styles.cartButton}>
+                <TouchableOpacity style={styles.cartButton}
+                    activeOpacity={0.8}
+                    onPress={() => navigation.navigate('Cart')}>
                     <Icon name="cart-outline" size={24} color="#fff" />
                 </TouchableOpacity>
 
             </View>
             <ScrollView style={styles.content}>
-                <View style={styles.shopInfo}>
+                <View>
+                <View style={styles.headerlogo}>
+                    
+                        <Image source={require('../../assets/logo.png')} style={{ width: 100, height: 100 }} />
+
+                    </View>
+
+                    <Text style={styles.shopTitle}>SHOP</Text>  
+                </View>
+                {/* <View style={styles.shopInfo}>
                     <Image style={styles.shopAvatar} source={require('../../assets/logo.png')} />
                     <View style={styles.shopName}>
                         <Text style={styles.shopTitle}>My Shop</Text>
@@ -41,12 +52,18 @@ const MaketScreen = () => {
                             <Text style={styles.shopRatingText}>(4.0)</Text>
                         </View>
                     </View>
-                </View>
+                </View> */}
                 <View style={styles.products}>
+               
                     <View style={styles.product}>
                         <Image style={styles.productImage} source={require('../../assets/logo.png')} />
                         <View style={styles.productInfo}>
                             <Text style={styles.productTitle}>กล้วย Shpe</Text>
+                            <TouchableOpacity style={styles.cartButton}
+                                activeOpacity={0.8}
+                                onPress={() => navigation.navigate('Home')}>
+                                
+                            </TouchableOpacity>
                             <Text style={styles.productPrice}>กล้วยๆ</Text>
                         </View>
                     </View>
@@ -81,6 +98,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+    },
+    headerlogo: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 5,
+        marginBottom: 3,
+
+
     },
     header: {
         height: 60,
@@ -130,6 +155,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     shopTitle: {
+        
         fontSize: 18,
         fontWeight: 'bold',
     },
@@ -160,6 +186,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     productTitle: {
+        
         fontSize: 16,
         fontWeight: 'bold',
         marginBottom: 5,

@@ -40,9 +40,6 @@ function LoginScreen({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
         <Text style={styles.signupLink}>Don't have an account? Signup here</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('Myshop')}>
-      <Text style={styles.signupLink}>Test Myshop</Text>
-      </TouchableOpacity>
 
      
     </View>
